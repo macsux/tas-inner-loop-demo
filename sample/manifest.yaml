@@ -1,0 +1,8 @@
+---
+applications:
+- name: testapp
+  path: bin/Debug/net6.0/linux-x64/publish/
+  health-check: none
+  buildpacks:
+  - dotnet_core_buildpack
+  command: cd ${HOME} && ./watchexec --ignore *.yaml --restart --watch . 'dotnet basicapp.dll --urls http://0.0.0.0:8080'

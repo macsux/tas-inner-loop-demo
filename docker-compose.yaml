@@ -1,0 +1,12 @@
+version: '3.0'
+services:
+  sync:
+    #build: ./rsync-exec
+    image: sample:live-sync
+    volumes:
+      #- ./sample/bin/Debug/net6.0/linux-x64/publish:/sync
+      - ~/.cf:/root/.cf
+      - ./sample:/app
+      - ./sample/bin/.buildsync:/syncorig # work around sync folder being available during first build inside /syncorig and then updated by tilt during livesync into /sync
+      
+    env_file: .env
