@@ -3,7 +3,8 @@ This is a proof of concept demo of an inner-loop for .NET app running on Tanzu A
 ## Quick start
 
 1. Have .NET 6 SDK & Tilt installed
-2. Run `tilt up` from root dir
+2. Be logged in and targeting org / space with `cf`
+3. Run `tilt up` from root dir
 
 ## Config
 
