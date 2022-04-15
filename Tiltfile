@@ -28,20 +28,6 @@ local_resource(
 
 docker_compose('docker-compose.yaml')
 
-# docker_build(
-#   # Image name - must match the image in the docker-compose file
-#   'sample:live-sync',
-#   # Docker context
-#   '.',
-#   #deps=['./sample/bin/.buildsync'],
-#   live_update = [
-#     # Sync local files into the container.
-#     sync('./sample/bin/.buildsync', '/sync'),
-#     run('/resync.sh')
-#     # Re-run npm install whenever package.json changes.
-#     #run('npm i', trigger='package.json'),
-#   ])
-
 
 custom_build(
         'sample:live-sync',
@@ -52,23 +38,3 @@ custom_build(
           run('/resync.sh')
         ]
     )
-
-# custom_build(
-#   # Image name - must match the image in the docker-compose file
-#   'tilt.dev/express-redis-app',
-#   # Docker context
-#   '.',
-#   live_update = [
-#     # Sync local files into the container.
-#     sync('.', '/var/www/app'),
-
-#     # Re-run npm install whenever package.json changes.
-#     run('npm i', trigger='package.json'),
-
-#     # Restart the process to pick up the changed files.
-#     restart_container()
-#   ])
-
-# Add labels to Docker services
-# dc_resource('redis', labels=["database"])
-# dc_resource('app', labels=["server"])
